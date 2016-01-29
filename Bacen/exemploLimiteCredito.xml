@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+ESCLARECIMENTOS
+
+Os comentarios (tags iniciadas com < ! - -) se referem a tag imediatamente inferior
+Este arquivo XML e um exemplo de como devera ser feita a informacao de limites de credito CONTRATADOS e nao associados a uma modalidade especifica e sim ao cliente. Ou seja, para os limites de credito globais que podem ser usadas em diversas modalidades.
+
+ -->
+
+<!-- Introducao - Documento 3040, arquivo novo, data-base de referencia - fev/2014, IF informante CNPJ 12345678 - O Numero Total de Clientes 3000 clientes-->
+
+<Doc3040 DtBase="2014-02" CNPJ="12345678" Remessa="1" Parte="1" TpArq="F" NomeResp="xxxxx xxxxxxxxxxx" EmailResp="xxxxx.xxxxx@xxxx.com" TelResp="ddnnnnnnnn" TotalCli="3000">
+
+<!-- Tag cliente com os atributos do cliente informados: tipo, identificacao, autorizacao consulta, porte, tipo de controle, inicio de relacionamento, conglomerado economico -->
+<Cli Tp="2" Cd="00038166" Autorzc="S" PorteCli="1" TpCtrl="01" IniRelactCli="2008-01-01" CongEcon="000000" ClassCli="AA">
+
+	<!-- Tag oper com atributos da operacao -->
+	<!-- o atributo DetCli tem por finalidade o Detalhamento do cliente pessoa juridica em CNPJ 14 digitos - repeticao do CNPJ base do cliente + 6 digitos restantes -->
+	<!-- demais atributos: contrato da operacao, natureza da operacao, modalidade da operacao, origem dos recursos, indexador, variacao cambial, data de vencimento, classificacao de risco, cep agencia contratacao, taxa efetiva, data de contratacao, provisao constituida -->
+	<!-- A operacao deste exemplo NAO possui caracteristicas especiais -->
+	<!-- Observar o atributo Mod - eh a Modalidade da operacao, segundo anexo 3 - 19 (limite), 01 (limite contratado e nao utilizado) -->
+
+	<Op DetCli="00038166000288" Contrt="ABC123" NatuOp="01" Mod="1901" OrigemRec="0101" Indx="11" VarCamb="790" DtVencOp="2020-01-01" ClassOp="AA" CEP="00000000" TaxEft="81.25" DtContr="2009-01-01" ProvConsttd="1000">
+
+		<!-- Tag venc - vencimentos. Observar os vencimentos v20 e v40 que correspondem a LIMITE DE CREDITO ATE 360 DIAS e LIMITE DE CREDITO ACIMA DE 360 DIAS -->
+ 		<Venc v20="100000" v40="100000" />
+	</Op>
+
+</Cli>
+
+</Doc3040>
+

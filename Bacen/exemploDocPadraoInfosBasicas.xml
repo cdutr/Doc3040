@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ESCLARECIMENTOS
+Os comentarios (tags iniciadas com < ! - -) se referem a tag imediatamente inferior
+
+ -->
+<!-- Introducao - Documento 3040, arquivo novo, data-base de referencia - fev/2014, IF informante CNPJ 12345678 - O Numero Total de Clientes 3000 clientes-->
+<Doc3040 DtBase="2014-02" CNPJ="12345678" Remessa="1" Parte="1" TpArq="F" NomeResp="xxxxx xxxxxxxxxxx" EmailResp="xxxxx.xxxxx@xxxx.com" TelResp="ddnnnnnnnn" TotalCli="3000"> 
+
+<!-- Tag cliente com os atributos do cliente informados: tipo, identificacao, autorizacao consulta, porte, tipo de controle, inicio de relacionamento, conglomerado economico -->
+<Cli Tp="2" Cd="00038166" Autorzc="S" PorteCli="1" TpCtrl="01" IniRelactCli="2010-01-01" CongEcon="000000" ClassCli="AA"> 
+	<!-- Tag oper com atributos da operacao -->
+	<!-- o atributo DetCli tem por finalidade o Detalhamento do cliente pessoa juridica em CNPJ 14 digitos - repeticao do CNPJ base do cliente + 6 digitos restantes -->
+	<!-- demais atributos: contrato da operacao, natureza da operacao, modalidade da operacao, origem dos recursos, indexador, variacao cambial, data de vencimento, classificacao de risco, cep agencia contratacao, taxa efetiva, data de contratacao, provisao constituida -->
+	<!-- Atributo CaracEspecial - devera ser preenchido com a concatenacao das caracteristicas especiais que a operacao possuir. No exemplo abaixo, a operacao possui as caracteristicas especiais 02 e 03 -->
+	<Op DetCli="00038166000288" Contrt="ABC123" NatuOp="01" Mod="0101" OrigemRec="0101" Indx="11" VarCamb="790" DtVencOp="2020-01-01" ClassOp="AA" CEP="00000000" TaxEft="20.25" DtContr="2010-01-01" ProvConsttd="1000.0" CaracEspecial="02;03"> 
+                <!-- tac Venc com o preenchimento das ocorrencias de vencimentos que a operacao possuir (cada vencimento eh um atributo desta tag) --> 
+		<Venc v110="10000" v120="10000" v130="10000" v140="10000" v150="10000"/>
+                <!-- Tag Gar com os seguintes atributos: Tipo e subtipo da garantia, segundo anexo 12. O tipo e subtipo devem ser informados de forma concatenada. No exemplo abaixo 0902 = tipo 09 e subtipo 02 = garantia fidejussoria de pessoa juridica -->
+		<!-- atributo IdGar com a identificacao (cnpj ou cpf) do garantidor fidejussorio -->
+		<!-- atributo PercGar com o Percentual da garantia dado pelo garantidor fidejussorio-->
+		<Gar Tp="0902" Ident="22222222" PercGar="100"/>
+	<!-- Termino das informacoes sobre a primeira operacao do cliente 00038166 -->
+	</Op>
+	
+	<!-- Bloco de informacoes sobre a segunda operacao do cliente 00038166 -->
+	<!-- observar que os seis digitos desta segunda operacao sao de outra filial deste cliente -->
+	<Op DetCli="00038166000369" Contrt="XYZ123" NatuOp="01" Mod="0101" OrigemRec="0101" Indx="11" VarCamb="790" DtVencOp="2020-01-01" ClassOp="AA" CEP="00000000" TaxEft="54.23" DtContr="2010-01-01" ProvConsttd="1000.0">
+		<Venc v110="20000" v120="20000" v130="20000" v140="20000" v150="20000"/>
+		<!-- Tag Gar com os seguintes atributos: Tipo e subtipo da garantia, segundo anexo 12. O tipo e subtipo devem ser informados de forma concatenada. No exemplo abaixo 0102 = tipo 01 e subtipo 02 = cessao de direitos creditorios - cheques -->
+		<!-- Valor original da garantia -->
+		<!-- Valor da garantia na data de reavaliacao -->
+		<!-- Data de reavaliacao -->
+		<Gar Tp="0102" VlrOrig="100000" VlrData="100000" DtReav="2010-10-01"/>
+	</Op>
+
+</Cli>
+
+<!-- Tag Agreg - Bloco de informacoes agregadas: operacoes com responsabilidade abaixo de R$1.000
+ na tag de informacoes agregadas -->
+<!-- Modalidade, segundo o anexo 3 -->
+<!-- Classificacao da Operacao, segundo anexo 17 -->
+<!-- Faixa de Valor, segundo anexo 14 -->
+<!-- Tipo de Cliente, segundo anexo 11 -->
+<!-- Tipo de Controle, segundo anexo 10 -->
+<!-- Localizacao, segundo anexo 7 -->
+<!-- Origem de Recursos, segundo anexo 4 -->
+<!-- Natureza da operacao, segundo anexo 2 -->
+<!-- Caracteristica Especial, segundo anexo 8 - nas informacoes agregadas permite apenas uma caracteristica especial por agregacao - Deve ser considerada a principal caracteristica da operacao -->
+<!-- Vinculacao a Moeda Estrangeira, segundo anexo 18 -->
+<!-- Prazo em dobro para provisionamento, segundo anexo 19 -->
+<!-- Atributo "DesempOp - Desempenho da operacao" eh um novo campo de agregacao. As operacoes, alem das agregacoes ja existentes, deverao tambem ser agrupadas segundo as possibilidades de sua performance de vencimentos dada pelo anexo 28 -->
+
+<Agreg Mod="0101" ClassOp="AA" FaixaVlr="1" TpCli="1" TpCtrl="01" Localiz="10058" OrigemRec="0100" NatuOp="01" CaracEspecial="01" VincME="N" PrzProvm="N" DesempOp="01" QtdOp="10000" QtdCli="8000" ProvConsttd="1000000">
+	<Venc v110="20000" v120="20000" v130="20000" v140="20000" v150="20000"/>
+</Agreg>	 
+
+<Agreg Mod="0202" ClassOp="B" FaixaVlr="1" TpCli="1" TpCtrl="01" Localiz="10058" OrigemRec="0100" NatuOp="01" CaracEspecial="01" VincME="N" PrzProvm="N" DesempOp="01" QtdOp="10000" QtdCli="8000" ProvConsttd="1000000">
+	 <Venc v110="20000" v120="20000" v130="20000" v140="20000" v150="20000"/>
+	 
+</Agreg>
+</Doc3040>

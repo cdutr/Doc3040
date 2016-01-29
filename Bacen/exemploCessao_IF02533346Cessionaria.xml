@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+ESCLARECIMENTOS
+Os comentarios (tags iniciadas com < ! - -) se referem a tag imediatamente inferior
+Este e um exemplo de como devera ser informada a cessao de uma operacao, na ponta do cessionario (com coobrigacao).
+Resumo - IF Cedente - CNPJ 29507878, IC Cessionaria - CNPJ 02533346 - O Numero Total de Clientes 3000 clientes
+
+Documento 3040 da IF 02533346, cessionaria de operacoes - data de referencia fev/2014-->
+<Doc3040 DtBase="2014-02" CNPJ="02533346" Remessa="1" Parte="1" TpArq="F" NomeResp="xxxxx xxxxxxxxxxx" EmailResp="xxxxx.xxxxx@xxxx.com" TelResp="ddnnnnnnnn" TotalCli="3000">
+
+<!-- Tag cliente com os atributos do cliente informados: tipo, identificacao, autorizacao consulta, porte, tipo de controle, inicio de relacionamento, conglomerado economico -->
+<Cli Tp="2" Cd="29507878" Autorzc="S" PorteCli="1" TpCtrl="01" IniRelactCli="2008-01-01" ClassCli="AA">
+
+	<!-- Tag oper com atributos da operacao -->
+	<!-- o atributo DetCli tem por finalidade o Detalhamento do cliente pessoa juridica em CNPJ 14 digitos - repeticao do CNPJ base do cliente + 6 digitos restantes -->
+	<!-- demais atributos: contrato da operacao, natureza da operacao, modalidade da operacao, origem dos recursos, indexador, variacao cambial, data de vencimento, classificacao de risco, cep agencia contratacao, taxa efetiva, data de contratacao, provisao constituida -->
+	<!-- observar que, a natureza desta operacao (atributo NatuOp) muda para 04 - operacao adquirida de IF com coobrigacao do cedente. -->
+	<!-- O cliente nesta operacao eh a IF cessionaria -->
+	<!-- Esta operacao representa, por parte do cessionario, a informacao sobre o pacote de operacoes que adquiriu do cedente (operacoes cedidas no arquivo exemplo "5-exemploCessao_IF12345678Cedente_v3" -->
+	<Op DetCli="29507878000108" Contrt="AAAACCCC1111" NatuOp="04" Mod="0101" OrigemRec="0101" Indx="11" VarCamb="790" DtVencOp="2020-01-01" ClassOp="AA" CEP="00000000" TaxEft="42.11" DtContr="2010-01-01" ProvConsttd="1000">
+
+		<!-- tac Venc com o preenchimento das ocorrencias de vencimentos que a operacao possuir (cada vencimento eh um atributo desta tag) --> 
+		<Venc v110="30000" v120="30000" v130="30000" v140="30000" v150="30000"/>
+
+		<!-- Tag Inf - Bloco das Informacoes Adicionais sobre a Operacao. Este bloco de tag "Inf" deve ser repetido ate o esgotamento de todas as informacoes adicionais existentes para esta operacao -->
+		<!-- Atributo Tp - Tipo e subtipo da informacao, segundo anexo 26. O tipo e subtipo devem ser informados de forma concatenada. No exemplo abaixo 0101 = tipo 01 e subtipo 01 = Informacoes de cessao, Informacoes de cessionario da operacao -->
+		<!-- Atributo Cd - Codigo do contrato DE CESSAO, por ora definido como a data da celebracao do contrato, no formato AAAAMMDD -->
+		<!-- Atributo Perc - percentual de coobrigacao assumido pelo cedente em relacao ao cessionario -->
+		<Inf Tp="0101" Cd="2010-09-01" Perc="100"/>
+	</Op>
+
+</Cli>
+
+
+</Doc3040>
+

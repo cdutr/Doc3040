@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+ESCLARECIMENTOS
+Os comentarios (tags iniciadas com < ! - -) se referem a tag imediatamente inferior.
+Este e um exemplo de como devera ser utilizado o campo de agregacao Desempenho da Operacao.
+Documento 3040 unico (nao particionado) da IF 12345678 -data-base de referencia - fev/2014 - O Numero Total de Clientes 3000 clientes
+A parte individualizada foi omitida para simplificacao do exemplo.
+
+-->
+<Doc3040 DtBase="2014-02" CNPJ="12345678" Remessa="1" Parte="1" TpArq="F" NomeResp="xxxxx xxxxxxxxxxx" EmailResp="xxxxx.xxxxx@xxxx.com" TelResp="ddnnnnnnnn" TotalCli="3000">
+
+	<!-- 
+	EXEMPLO 1
+	Neste exemplo abaixo, segue a agregacao de todas as operacoes de natureza propria, concedida pela propria instituicao, da modalidade 'cheque especial', com origem de recursos 'livres e nao liberados', nao vinculados a moeda estrangeira, de classificacao de risco A, na faixa de valor de 100 a 499,99 reais, localizadas em sao paulo, para pessoas fisicas com CPF, com provisao constituida nula, de OPERACOES QUE SAO APENAS A VENCER, ou seja, DesempOp=01.
+	Para estes criterios de agregacao, ha 5 operacoes, 3 clientes, com a distribuicao de vencimentos descrita na tag Venc.
+	Notar que os vencimentos foram distribuidos de acordo com o somatorio dos vencimentos das 5 operacoes que foram agregadas.
+	
+	Nesse exemplo estamos considerando as seguintes operacoes:
+	1 - v110-60, v120-60, v150-60, v160-60, v165-60
+	2 - v110-50, v160-150, v165-50
+	3 - v110-100
+	4 - v120-100, v150-40
+	5 - v110-90, v120-140, v150-100, v160-90, v165-60
+	-->
+	
+	<Agreg NatuOp="01" Mod="0213" OrigemRec="0100" VincME="N" ClassOp="A" FaixaVlr="2" PrzProvm="N" Localiz="10058" TpCli="1" DesempOp="01" ProvConsttd="0" QtdOp="5" QtdCli="3">
+		<Venc v110="300" v120="300" v150="200" v160="300" v165="170"></Venc>
+	</Agreg>
+
+	<!-- 
+	EXEMPLO 2
+	Neste exemplo abaixo, segue a agregacao de todas as operacoes de natureza propria, concedida pela propria instituicao, da modalidade 'cheque especial', com origem de recursos 'livres e nao liberados', nao vinculados a moeda estrangeira, de classificacao de risco A, na faixa de valor de 100 a 499,99 reais, localizadas em sao paulo, para pessoas fisicas com CPF, com provisao constituida de 75 reais, de OPERACOES QUE ESTAO VENCIDAS DE 15 A 30 DIAS, ou seja, DesempOp=02.
+	Para estes criterios de agregacao, ha 5 operacoes, 3 clientes, com a distribuicao de vencimentos descrita na tag Venc.
+	Notar que os vencimentos foram distribuidos de acordo com o somatorio dos vencimentos das 5 operacoes que foram agregadas e que apesar de as operacoes conterem parcelas vencidas, tambem ha parcelas ha vencer nestas 5 operacoes agregadas.
+	
+	Nesse exemplo estamos considerando as seguintes operacoes:
+	1 - v120-60, v150-60, v160-60, v165-60, v210-100
+	2 - v110-50, v160-50, v165-50, v210-100
+	3 - v110-100, v210-100
+	4 - v120-100, v150-40, v210-100
+	5 - v110-50, v120-40, v150-100, v160-90, v165-90, v210-100
+	-->
+
+	<Agreg NatuOp="01" Mod="0213" OrigemRec="0100" VincME="N" ClassOp="B" FaixaVlr="2" PrzProvm="N" Localiz="10058" TpCli="1" DesempOp="02" ProvConsttd="75" QtdOp="5" QtdCli="3">
+		<Venc v110="200" v120="200" v150="200" v160="200" v165="200" v210="500"></Venc>
+	</Agreg>
+	
+	<!-- 
+	EXEMPLO 3
+	Neste exemplo abaixo, segue a agregacao de todas as operacoes de natureza propria, concedida pela propria instituicao, da modalidade 'cheque especial', com origem de recursos 'livres e nao liberados', nao vinculados a moeda estrangeira, de classificacao de risco A, na faixa de valor de 100 a 499,99 reais, localizadas em sao paulo, para pessoas fisicas com CPF, com provisao constituida de 150 reais, de OPERACOES QUE ESTAO VENCIDAS DE 31 A 60 DIAS, ou seja, DesempOp=03.
+	Para estes criterios de agregacao, ha 5 operacoes, 3 clientes, com a distribuicao de vencimentos descrita na tag Venc.
+	Notar que os vencimentos foram distribuidos de acordo com o somatorio dos vencimentos das 5 operacoes que foram agregadas e que apesar de as operacoes conterem parcelas vencidas, tambem ha parcelas ha vencer nestas 5 operacoes agregadas.
+
+	Nesse exemplo estamos considerando as seguintes operacoes:
+	1 - v120-60, v150-20, v160-60, v165-60, v210-100, v220-60
+	2 - v110-150, v160-50, v165-50, v220-60
+	3 - v110-200, v220-60
+	4 - v120-40, v150-40, v220-60
+	5 - v110-50, v150-40, v160-90, v165-90, v210-100, v220-60
+	-->
+
+	<Agreg NatuOp="01" Mod="0213" OrigemRec="0100" VincME="N" ClassOp="C" FaixaVlr="2" PrzProvm="N" Localiz="10058" TpCli="1" DesempOp="03" ProvConsttd="150" QtdOp="5" QtdCli="3">
+		<Venc v110="400" v120="100" v150="100" v160="200" v165="200" v210="200" v220="300"></Venc>
+	</Agreg>
+</Doc3040>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ESCLARECIMENTOS
+
+Os comentarios (tags iniciadas com < ! - -) se referem a tag imediatamente inferior
+Este arquivo XML e um exemplo de como devera ser feita a informacao de parcelas a liberar dentro de uma modalidade de financiamento de projeto.
+-->
+<!-- Introducao - Documento 3040, arquivo novo, data-base de referencia - fev/2014, IF informante CNPJ 12345678 - O Numero Total de Clientes 3000 clientes-->
+<Doc3040 DtBase="2014-02" CNPJ="12345678" Remessa="1" Parte="1" TpArq="F" NomeResp="xxxxx xxxxxxxxxxx" EmailResp="xxxxx.xxxxx@xxxx.com" TelResp="ddnnnnnnnn" TotalCli="3000">
+
+<!-- Tag cliente com os atributos do cliente informados: tipo, identificacao, autorizacao consulta, porte, tipo de controle, inicio de relacionamento, conglomerado economico -->
+<Cli Tp="2" Cd="00038166" Autorzc="S" PorteCli="1" TpCtrl="01" IniRelactCli="2010-01-01" CongEcon="000000" ClassCli="AA">
+
+	<!-- Tag oper com atributos da operacao -->
+	<!-- o atributo DetCli tem por finalidade o Detalhamento do cliente pessoa juridica em CNPJ 14 digitos - repeticao do CNPJ base do cliente + 6 digitos restantes -->
+	<!-- demais atributos: contrato da operacao, natureza da operacao, modalidade da operacao, origem dos recursos, indexador, variacao cambial, data de vencimento, classificacao de risco, cep agencia contratacao, taxa efetiva, data de contratacao, provisao constituida -->
+	<!-- Atributo CaracEspecial - devera ser preenchido com a concatenacao das caracteristicas especiais que a operacao possuir. No exemplo abaixo, a operacao possui as caracteristicas especiais 01 e 11 -->
+
+	<Op DetCli="00038166000288" Contrt="ABC123" NatuOp="01" Mod="0490" OrigemRec="0101" Indx="11" VarCamb="790" DtVencOp="2020-01-01" ClassOp="AA" CEP="00000000" TaxEft="11.32" DtContr="2010-01-01" ProvConsttd="1000">
+
+		<!-- Tag venc - vencimentos. Observar os vencimentos v20 e v40 que correspondem a CREDITOS A LIBERAR ATE 360 DIAS e CREDITOS A LIBERAR ACIMA DE 360 DIAS respectivamente -->
+		<Venc v60="100000" v80="100000" v110="10000" v120="10000" v130="10000" v140="10000" v150="10000"/>
+		
+	</Op>
+</Cli>
+
+</Doc3040>
