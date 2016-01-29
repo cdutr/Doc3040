@@ -1,5 +1,5 @@
 ﻿
-#Doc3040 - Dados de Risco de Crédito
+#Doc3040 - Dados de Risco de Crédito (WiP)
 
 ## O que é?
 
@@ -17,14 +17,13 @@
 > - Procurar códigos de operações (geralmente números de contratos) duplicadas no arquivo;
 > - Criar arquivos de log das validações e criticas que o programa gera.
 
-
 ## Licença
 
 > Apache 2.0
 
 ## Contribua 
 
-> Se você chegou até aqui e sabe para que serve tais validações, considere doar algo... 
+> Se você chegou até aqui e sabe para que serve este programa, considere doar.
 
 > Este software desenvolvido por alguma empresa custaria alguns bons milhares de reais!
 
